@@ -316,7 +316,7 @@ export default function Courses() {
                           required
                           type="tel" 
                           className="w-full bg-[#0a0a10] border border-white/[0.1] rounded-xl px-4 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-white placeholder:text-slate-600"
-                          placeholder="+91 9876543210"
+                          placeholder="+91 7014286828"
                           value={formData.whatsapp}
                           onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
                         />

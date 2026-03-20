@@ -62,7 +62,7 @@ export default function Footer() {
             <div className="space-y-2.5">
               {[
                 { icon: Mail, text: 'hello@PuzzlersWhiz.com' },
-                { icon: Phone, text: '+91 98765 43210' },
+                { icon: Phone, text: '+91 70142 86828' },
                 { icon: MapPin, text: 'Mumbai, India' },
               ].map((item) => (
                 <div key={item.text} className="flex items-center gap-2 text-[12px] text-slate-600">

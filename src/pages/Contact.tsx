@@ -7,7 +7,7 @@ import { useSEO } from '../hooks/useSEO'
 
 const contactInfo = [
   { icon: Mail, label: 'Email', value: 'hello@puzzlerswhiz.com', href: 'mailto:hello@puzzlerswhiz.com' },
-  { icon: Phone, label: 'Phone', value: '+91 98765 43210', href: 'tel:+919876543210' },
+  { icon: Phone, label: 'Phone', value: '+91 70142 86828', href: 'tel:+917014286828' },
   { icon: MapPin, label: 'Address', value: 'Mumbai, Maharashtra, India', href: '#' },
 ]
 
@@ -169,7 +169,7 @@ export default function Contact() {
                       <input
                         id="phone"
                         type="tel"
-                        placeholder="+91 9876543210"
+                        placeholder="+91 7014286828"
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
