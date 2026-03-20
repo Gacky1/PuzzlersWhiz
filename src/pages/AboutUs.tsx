@@ -75,23 +75,41 @@ export default function AboutUs() {
           </div>
         </section>
 
-        {/* Values */}
-        <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-black text-white text-center heading-xl mb-14">What we stand for</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Values Section (Premium Bento Box) */}
+        <section className="py-24 px-4 relative">
+          {/* Decorative background for values */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-[500px] rounded-full blur-[100px] opacity-10 pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse, #8b5cf6, transparent 60%)' }} />
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            <h2 className="text-4xl sm:text-5xl font-black text-white text-center heading-xl mb-16">
+              What we <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">stand for</span>
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
               {values.map((v, i) => (
                 <motion.div
                   key={v.title}
-                  initial={{ opacity: 0, y: 24 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="rounded-2xl border border-white/[0.06] bg-white/[0.025] p-7 hover:border-indigo-500/30 hover:bg-white/[0.04] transition-all duration-300"
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="relative group rounded-[2rem] overflow-hidden p-[1px]"
                 >
-                  <div className="text-3xl mb-4">{v.emoji}</div>
-                  <h3 className="text-white font-bold heading-xl mb-2">{v.title}</h3>
-                  <p className="text-slate-500 text-[13px] leading-relaxed">{v.desc}</p>
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/30 via-transparent to-purple-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="relative h-full bg-[#0a0a1a]/80 backdrop-blur-xl border border-white/[0.05] group-hover:border-white/[0.1] rounded-[2rem] p-8 sm:p-10 transition-all duration-300">
+                    <div className="absolute top-0 right-0 p-8 opacity-[0.03] text-8xl font-black -translate-y-4 translate-x-4 pointer-events-none transition-transform duration-500 group-hover:-translate-translate-y-2 group-hover:scale-110">
+                      0{i+1}
+                    </div>
+                    <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 shadow-[0_0_20px_rgba(99,102,241,0.1)] group-hover:shadow-[0_0_30px_rgba(99,102,241,0.3)]">
+                      {v.emoji}
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white heading-xl mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:to-purple-400 transition-all duration-300">
+                      {v.title}
+                    </h3>
+                    <p className="text-slate-400 text-base sm:text-[17px] leading-relaxed relative z-10">
+                      {v.desc}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -104,18 +122,19 @@ export default function AboutUs() {
             <h2 className="text-3xl font-black text-white text-center heading-xl mb-4">Meet the team</h2>
             <p className="text-slate-500 text-center mb-14 max-w-xl mx-auto">Hover or tap on our team members to reveal their profile.</p>
             
-            <div className="flex flex-col md:flex-row h-[700px] md:h-[600px] w-full gap-3 sm:gap-4">
+            <div className="flex flex-col md:flex-row h-[80vh] min-h-[500px] max-h-[800px] md:h-[600px] w-full gap-3 sm:gap-4 touch-pan-y">
               {team.map((member, i) => {
                 const isHovered = hoveredIndex === null ? i === 0 : hoveredIndex === i;
                 
                 return (
                   <motion.div
                     key={member.name}
+                    onClick={() => setHoveredIndex(i)}
                     onHoverStart={() => setHoveredIndex(i)}
-                    className={`relative rounded-[2rem] sm:rounded-[3rem] overflow-hidden cursor-pointer flex-1 group shadow-[0_0_20px_rgba(0,0,0,0.4)] ${isHovered ? 'md:flex-[4]' : 'md:flex-1'}`}
-                    animate={{ flex: isHovered ? 4 : 1 }}
+                    className={`relative rounded-[2rem] sm:rounded-[3rem] overflow-hidden cursor-pointer flex-1 group shadow-[0_0_20px_rgba(0,0,0,0.4)]`}
+                    animate={{ flex: isHovered ? (window.innerWidth < 768 ? 6 : 4) : 1 }}
                     transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-                    style={{ minWidth: '80px', minHeight: '80px' }}
+                    style={{ minHeight: '60px', minWidth: '60px' }}
                   >
                     <img 
                       src={member.image} 
