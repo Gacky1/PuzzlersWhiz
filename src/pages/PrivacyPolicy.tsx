@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useSEO } from '../hooks/useSEO'
 
 const sections = [
   {
@@ -42,6 +43,11 @@ const sections = [
 ]
 
 export default function PrivacyPolicy() {
+  useSEO({
+    title: 'Privacy Policy – PuzzlersWhiz',
+    description: 'Learn how PuzzlersWhiz handles your data. Read our Privacy Policy to understand what information we collect and how we use it to provide educational services.',
+    canonical: 'https://puzzlerswhiz.com/privacy-policy',
+  })
   return (
     <div className="min-h-screen" style={{ background: '#060610' }}>
       <Navbar />

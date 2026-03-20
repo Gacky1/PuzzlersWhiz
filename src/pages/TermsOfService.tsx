@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useSEO } from '../hooks/useSEO'
 
 const sections = [
   {
@@ -46,6 +47,11 @@ const sections = [
 ]
 
 export default function TermsOfService() {
+  useSEO({
+    title: 'Terms of Service – PuzzlersWhiz',
+    description: 'Read the Terms of Service for PuzzlersWhiz. These terms govern your use of our platform, courses, and educational materials.',
+    canonical: 'https://puzzlerswhiz.com/terms-of-service',
+  })
   return (
     <div className="min-h-screen" style={{ background: '#060610' }}>
       <Navbar />

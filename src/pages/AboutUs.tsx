@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useSEO } from '../hooks/useSEO'
 
 const values = [
   { emoji: '🎯', title: 'Mission-Driven', desc: 'Every feature we build is driven by one question: does this help a student learn better?' },
@@ -19,6 +20,11 @@ const team = [
 ]
 
 export default function AboutUs() {
+  useSEO({
+    title: 'About Us – PuzzlersWhiz',
+    description: 'Learn about PuzzlersWhiz — our mission to democratise quality education in India, the team behind the platform, and the values that drive us.',
+    canonical: 'https://puzzlerswhiz.com/about',
+  })
   return (
     <div className="min-h-screen" style={{ background: '#060610' }}>
       <Navbar />

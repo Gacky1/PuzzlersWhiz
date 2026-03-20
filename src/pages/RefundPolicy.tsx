@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { IndianRupee, Clock, CheckCircle, XCircle } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useSEO } from '../hooks/useSEO'
 
 const eligibility = [
   { icon: CheckCircle, color: 'text-green-400', text: 'Refund requested within 7 days of payment' },
@@ -40,6 +41,11 @@ const sections = [
 ]
 
 export default function RefundPolicy() {
+  useSEO({
+    title: 'Refund Policy – PuzzlersWhiz',
+    description: 'Read our Refund Policy. Learn about your eligibility for refunds, partial refunds, and our 7-day money-back process.',
+    canonical: 'https://puzzlerswhiz.com/refund-policy',
+  })
   return (
     <div className="min-h-screen" style={{ background: '#060610' }}>
       <Navbar />

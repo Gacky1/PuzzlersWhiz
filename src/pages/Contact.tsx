@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone, MessageSquare, Send } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useState } from 'react'
+import { useSEO } from '../hooks/useSEO'
 
 const contactInfo = [
   { icon: Mail, label: 'Email', value: 'hello@puzzlerswhiz.com', href: 'mailto:hello@puzzlerswhiz.com' },
@@ -11,6 +12,11 @@ const contactInfo = [
 ]
 
 export default function Contact() {
+  useSEO({
+    title: 'Contact Us – PuzzlersWhiz',
+    description: 'Get in touch with the PuzzlersWhiz team. Send us a message, reach us by email or phone, or visit us in Mumbai, India.',
+    canonical: 'https://puzzlerswhiz.com/contact',
+  })
   const [sent, setSent] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {

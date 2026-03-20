@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useSEO } from '../hooks/useSEO'
 
 const cookieTypes = [
   {
@@ -53,6 +54,11 @@ const sections = [
 ]
 
 export default function CookiePolicy() {
+  useSEO({
+    title: 'Cookie Policy – PuzzlersWhiz',
+    description: 'Understand how PuzzlersWhiz uses cookies and similar tracking technologies on our platform, and learn how you can manage your preferences.',
+    canonical: 'https://puzzlerswhiz.com/cookie-policy',
+  })
   return (
     <div className="min-h-screen" style={{ background: '#060610' }}>
       <Navbar />

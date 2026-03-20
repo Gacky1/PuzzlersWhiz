@@ -89,7 +89,7 @@ export default function Footer() {
 
           {/* Link columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
+            <nav key={title} aria-label={`${title} navigation`}>
               <h4 className="text-[12px] font-semibold text-slate-400 uppercase tracking-widest mb-4 heading-xl">
                 {title}
               </h4>
@@ -114,7 +114,7 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
 

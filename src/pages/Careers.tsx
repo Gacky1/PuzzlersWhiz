@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Briefcase, MapPin, Clock, ArrowRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useSEO } from '../hooks/useSEO'
 
 const openRoles = [
   { title: 'Senior Full-Stack Engineer', dept: 'Engineering', location: 'Remote / Mumbai', type: 'Full-time' },
@@ -21,6 +22,11 @@ const perks = [
 ]
 
 export default function Careers() {
+  useSEO({
+    title: 'Careers – PuzzlersWhiz',
+    description: 'Join the PuzzlersWhiz team! Explore open roles in engineering, design, education, and marketing. We\'re building the future of EdTech in India.',
+    canonical: 'https://puzzlerswhiz.com/careers',
+  })
   return (
     <div className="min-h-screen" style={{ background: '#060610' }}>
       <Navbar />
