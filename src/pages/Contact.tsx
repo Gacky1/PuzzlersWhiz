@@ -17,11 +17,45 @@ export default function Contact() {
     description: 'Get in touch with the PuzzlersWhiz team. Send us a message, reach us by email or phone, or visit us in Mumbai, India.',
     canonical: 'https://puzzlerswhiz.com/contact',
   })
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    topic: 'Course Inquiry',
+    message: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [sent, setSent] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
+    setIsSubmitting(true)
+
+    const submitData = new FormData()
+    submitData.append("access_key", "e3cc6dc4-f2cf-4471-b18a-974ac819dbe2")
+    submitData.append("subject", `New Inquiry: ${formData.topic}`)
+    submitData.append("Name", formData.name)
+    submitData.append("Email", formData.email)
+    submitData.append("Phone Number", formData.phone)
+    submitData.append("Topic", formData.topic)
+    submitData.append("Message", formData.message)
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submitData
+      })
+      const data = await response.json()
+      if (data.success) {
+        setSent(true)
+      } else {
+        alert("Submission failed. Please try again.")
+      }
+    } catch (error) {
+      alert("Error submitting form. Please check your internet connection.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -101,38 +135,93 @@ export default function Contact() {
                   <p className="text-slate-500 text-sm">We'll get back to you within 24 hours.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  {[
-                    { id: 'name', label: 'Your Name', type: 'text', placeholder: 'John Doe' },
-                    { id: 'email', label: 'Email Address', type: 'email', placeholder: 'john@example.com' },
-                  ].map((field) => (
-                    <div key={field.id}>
-                      <label htmlFor={field.id} className="block text-[12px] text-slate-400 font-medium mb-2 uppercase tracking-wider">{field.label}</label>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="name" className="block text-[12px] text-slate-400 font-medium mb-2 uppercase tracking-wider">Your Name</label>
                       <input
-                        id={field.id}
-                        type={field.type}
-                        placeholder={field.placeholder}
+                        id="name"
+                        type="text"
+                        placeholder="John Doe"
                         required
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
                         className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.06] transition-all duration-200"
                       />
                     </div>
-                  ))}
+                    <div>
+                      <label htmlFor="email" className="block text-[12px] text-slate-400 font-medium mb-2 uppercase tracking-wider">Email Address</label>
+                      <input
+                        id="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.06] transition-all duration-200"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="phone" className="block text-[12px] text-slate-400 font-medium mb-2 uppercase tracking-wider">Phone Number</label>
+                      <input
+                        id="phone"
+                        type="tel"
+                        placeholder="+91 9876543210"
+                        required
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.06] transition-all duration-200"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="topic" className="block text-[12px] text-slate-400 font-medium mb-2 uppercase tracking-wider">Inquiry Topic</label>
+                      <div className="relative">
+                        <select
+                          id="topic"
+                          required
+                          value={formData.topic}
+                          onChange={(e) => setFormData({...formData, topic: e.target.value})}
+                          className="w-full px-4 py-3 rounded-xl bg-[#121220] border border-white/[0.08] text-white text-sm appearance-none focus:outline-none focus:border-indigo-500/50 focus:bg-[#1a1a2e] transition-all duration-200 cursor-pointer"
+                        >
+                          <option value="Course Inquiry">Course Inquiry</option>
+                          <option value="Career Guidance">Career Guidance</option>
+                          <option value="Technical Support">Technical Support</option>
+                          <option value="Payment Issue">Payment Issue</option>
+                          <option value="Other">Other</option>
+                        </select>
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-500">
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"></path></svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <div>
                     <label htmlFor="message" className="block text-[12px] text-slate-400 font-medium mb-2 uppercase tracking-wider">Message</label>
                     <textarea
                       id="message"
-                      rows={5}
+                      rows={4}
                       placeholder="Tell us how we can help..."
                       required
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
                       className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.06] transition-all duration-200 resize-none"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white btn-gradient shimmer-effect transition-all duration-200 hover:opacity-90"
+                    disabled={isSubmitting}
+                    className={`w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white transition-all duration-200 ${
+                      isSubmitting 
+                        ? 'bg-slate-700 cursor-not-allowed opacity-80' 
+                        : 'btn-gradient shimmer-effect hover:opacity-90 shadow-lg shadow-indigo-500/20'
+                    }`}
                   >
-                    <Send size={15} />
-                    Send Message
+                    {!isSubmitting && <Send size={15} />}
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </form>
               )}

@@ -9,6 +9,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import CookiePolicy from './pages/CookiePolicy'
 import RefundPolicy from './pages/RefundPolicy'
+import Courses from './pages/Courses'
+import FAQ from './pages/FAQ'
 import logoImg from './assets/LogoTp.png'
 
 function LoadingScreen({ onDone }: { onDone: () => void }) {
@@ -154,6 +156,8 @@ function App() {
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />
         <Route path="/refund-policy" element={<RefundPolicy />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
     </BrowserRouter>
   )

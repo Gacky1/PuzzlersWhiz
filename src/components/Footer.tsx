@@ -11,7 +11,7 @@ const footerLinks: Record<string, { label: string; to?: string; href?: string }[
     { label: 'Pricing', href: '#cta' },
   ],
   Learn: [
-    { label: 'Courses', href: '#' },
+    { label: 'Courses', to: '/courses' },
     { label: 'Labs', href: '#' },
     { label: 'Quizzes', href: '#' },
     { label: 'Analytics', href: '#' },

@@ -15,7 +15,7 @@ const eligibility = [
 ]
 
 const steps = [
-  { step: '01', title: 'Submit a Request', desc: 'Email refunds@puzzlerswhiz.com with your registered email, order ID, and reason for refund.' },
+  { step: '01', title: 'Submit a Request', desc: 'Email hello@puzzlerswhiz.com with your registered email, order ID, and reason for refund.' },
   { step: '02', title: 'Review Period', desc: 'Our team will review your request within 3 business days and may reach out for additional information.' },
   { step: '03', title: 'Decision Notification', desc: 'You will receive an email with the outcome of your refund request.' },
   { step: '04', title: 'Refund Processing', desc: 'If approved, the refund will be credited to your original payment method within 5–10 business days.' },
@@ -145,8 +145,8 @@ export default function RefundPolicy() {
               <div className="mt-12 p-6 rounded-2xl border border-indigo-500/20 bg-indigo-500/5 text-center">
                 <p className="text-slate-400 text-[14px]">
                   Have a question about a refund?{' '}
-                  <a href="mailto:refunds@puzzlerswhiz.com" className="text-indigo-400 hover:text-indigo-300 transition-colors font-medium">
-                    refunds@puzzlerswhiz.com
+                  <a href="mailto:hello@puzzlerswhiz.com" className="text-indigo-400 hover:text-indigo-300 transition-colors font-medium">
+                    hello@puzzlerswhiz.com
                   </a>
                 </p>
               </div>

@@ -26,11 +26,11 @@ const sections = [
   },
   {
     title: '6. Data Retention',
-    content: `We retain your personal information for as long as your account is active or as needed to provide services. You may request deletion of your account and associated data at any time by contacting us at privacy@puzzlerswhiz.com. We will respond to such requests within 30 days, subject to legal retention obligations.`,
+    content: `We retain your personal information for as long as your account is active or as needed to provide services. You may request deletion of your account and associated data at any time by contacting us at hello@puzzlerswhiz.com. We will respond to such requests within 30 days, subject to legal retention obligations.`,
   },
   {
     title: '7. Children\'s Privacy',
-    content: `Our platform is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If we learn that we have collected information from a child under 13 without parental consent, we will promptly delete it. Parents or guardians who believe their child has provided us with personal information may contact us at privacy@puzzlerswhiz.com.`,
+    content: `Our platform is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If we learn that we have collected information from a child under 13 without parental consent, we will promptly delete it. Parents or guardians who believe their child has provided us with personal information may contact us at hello@puzzlerswhiz.com.`,
   },
   {
     title: '8. Changes to This Policy',
@@ -38,7 +38,7 @@ const sections = [
   },
   {
     title: '9. Contact Us',
-    content: `If you have any questions or concerns about this Privacy Policy or our data practices, please contact our Data Protection Officer at privacy@puzzlerswhiz.com or write to us at PuzzlersWhiz, Mumbai, Maharashtra, India.`,
+    content: `If you have any questions or concerns about this Privacy Policy or our data practices, please contact our Data Protection Officer at hello@puzzlerswhiz.com or write to us at PuzzlersWhiz, Mumbai, Maharashtra, India.`,
   },
 ]
 

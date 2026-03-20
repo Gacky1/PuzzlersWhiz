@@ -42,7 +42,7 @@ const sections = [
   },
   {
     title: '10. Contact',
-    content: `For questions about these Terms of Service, please contact us at legal@puzzlerswhiz.com.`,
+    content: `For questions about these Terms of Service, please contact us at hello@puzzlerswhiz.com.`,
   },
 ]
 

@@ -5,11 +5,11 @@ import { Menu, X } from 'lucide-react'
 import logoImg from '../assets/LogoTp.png'
 
 const navLinks = [
-  { label: 'Features', href: '#features' },
-  { label: 'How It Works', href: '#howitworks' },
-  { label: 'Platform', href: '#platform' },
-  { label: 'For You', href: '#audience' },
-  { label: 'Reviews', href: '#testimonials' },
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Courses', href: '/courses' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact Us', href: '/contact' },
 ]
 
 export default function Navbar() {
@@ -52,14 +52,14 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-0.5">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                to={link.href}
                 className="relative px-3.5 py-2 text-[13px] font-medium text-slate-400 hover:text-white rounded-lg hover:bg-white/[0.05] transition-all duration-200 group"
               >
                 {link.label}
                 <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-px bg-indigo-400 group-hover:w-4 transition-all duration-300" />
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -112,17 +112,20 @@ export default function Navbar() {
           >
             <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
               {navLinks.map((link, i) => (
-                <motion.a
+                <motion.div
                   key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="px-4 py-3 text-sm text-slate-400 hover:text-white hover:bg-white/[0.05] rounded-xl transition-all"
                 >
-                  {link.label}
-                </motion.a>
+                  <Link
+                    to={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="block px-4 py-3 text-sm text-slate-400 hover:text-white hover:bg-white/[0.05] rounded-xl transition-all"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
               ))}
               <div className="flex gap-2 mt-3 pt-3 border-t border-white/[0.06]">
                 <a href="#cta" onClick={() => setMenuOpen(false)}

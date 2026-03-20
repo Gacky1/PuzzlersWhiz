@@ -1,10 +1,12 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Features from '../components/Features'
+import PopularCourses from '../components/PopularCourses'
 import HowItWorks from '../components/HowItWorks'
 import PlatformPreview from '../components/PlatformPreview'
 import AudienceSection from '../components/AudienceSection'
 import Testimonials from '../components/Testimonials'
+import GuidanceCTA from '../components/GuidanceCTA'
 import CTA from '../components/CTA'
 import Footer from '../components/Footer'
 import { useSEO } from '../hooks/useSEO'
@@ -21,10 +23,12 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
+        <PopularCourses />
         <HowItWorks />
         <PlatformPreview />
         <AudienceSection />
         <Testimonials />
+        <GuidanceCTA />
         <CTA />
       </main>
       <Footer />
