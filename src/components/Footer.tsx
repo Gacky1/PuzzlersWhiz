@@ -1,18 +1,39 @@
 import { motion } from 'framer-motion'
-import { Zap, Twitter, Github, Linkedin, Instagram, Mail, MapPin, Phone } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Twitter, Github, Linkedin, Instagram, Mail, MapPin, Phone } from 'lucide-react'
+import logoImg from '../assets/LogoTp.png'
 
-const footerLinks = {
-  Platform: ['Features', 'How It Works', 'Platform Preview', 'Pricing'],
-  Learn: ['Courses', 'Labs', 'Quizzes', 'Analytics'],
-  Company: ['About Us', 'Blog', 'Careers', 'Contact'],
-  Legal: ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Refund Policy'],
+const footerLinks: Record<string, { label: string; to?: string; href?: string }[]> = {
+  Platform: [
+    { label: 'Features', href: '#features' },
+    { label: 'How It Works', href: '#howitworks' },
+    { label: 'Platform Preview', href: '#platform' },
+    { label: 'Pricing', href: '#cta' },
+  ],
+  Learn: [
+    { label: 'Courses', href: '#' },
+    { label: 'Labs', href: '#' },
+    { label: 'Quizzes', href: '#' },
+    { label: 'Analytics', href: '#' },
+  ],
+  Company: [
+    { label: 'About Us', to: '/about' },
+    { label: 'Careers', to: '/careers' },
+    { label: 'Contact', to: '/contact' },
+  ],
+  Legal: [
+    { label: 'Privacy Policy', to: '/privacy-policy' },
+    { label: 'Terms of Service', to: '/terms-of-service' },
+    { label: 'Cookie Policy', to: '/cookie-policy' },
+    { label: 'Refund Policy', to: '/refund-policy' },
+  ],
 }
 
 const socials = [
-  { icon: Twitter, label: 'Twitter' },
-  { icon: Github, label: 'GitHub' },
-  { icon: Linkedin, label: 'LinkedIn' },
-  { icon: Instagram, label: 'Instagram' },
+  { icon: Twitter, label: 'Twitter', href: '#' },
+  { icon: Github, label: 'GitHub', href: '#' },
+  { icon: Linkedin, label: 'LinkedIn', href: '#' },
+  { icon: Instagram, label: 'Instagram', href: '#' },
 ]
 
 export default function Footer() {
@@ -25,12 +46,14 @@ export default function Footer() {
         <div className="py-16 grid grid-cols-2 md:grid-cols-6 gap-10">
           {/* Brand */}
           <div className="col-span-2 space-y-5">
-            <a href="#" className="flex items-center gap-2.5 group w-fit">
-              <div className="w-8 h-8 rounded-xl animated-gradient flex items-center justify-center transition-transform group-hover:scale-110">
-                <Zap size={15} className="text-white" />
-              </div>
+            <Link to="/" className="flex items-center gap-2.5 group w-fit">
+              <img
+                src={logoImg}
+                alt="PuzzlersWhiz"
+                className="w-8 h-8 object-contain transition-transform group-hover:scale-110"
+              />
               <span className="text-[15px] font-bold text-white heading-xl">PuzzlersWhiz</span>
-            </a>
+            </Link>
 
             <p className="text-[13px] text-slate-600 leading-relaxed max-w-[220px]">
               A modern EdTech platform helping students, teachers, and institutes achieve real-world learning outcomes.
@@ -53,7 +76,7 @@ export default function Footer() {
               {socials.map((s) => (
                 <motion.a
                   key={s.label}
-                  href="#"
+                  href={s.href}
                   whileHover={{ scale: 1.12, y: -2 }}
                   aria-label={s.label}
                   className="w-8 h-8 rounded-xl bg-white/[0.04] border border-white/[0.07] flex items-center justify-center text-slate-600 hover:text-white hover:bg-indigo-600/30 hover:border-indigo-500/40 transition-all duration-200"
@@ -72,10 +95,22 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2.5">
                 {links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-[13px] text-slate-600 hover:text-slate-300 transition-colors duration-150">
-                      {link}
-                    </a>
+                  <li key={link.label}>
+                    {link.to ? (
+                      <Link
+                        to={link.to}
+                        className="text-[13px] text-slate-600 hover:text-slate-300 transition-colors duration-150"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-[13px] text-slate-600 hover:text-slate-300 transition-colors duration-150"
+                      >
+                        {link.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

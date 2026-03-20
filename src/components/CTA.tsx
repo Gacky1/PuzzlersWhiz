@@ -78,7 +78,7 @@ export default function CTA() {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <motion.a
-                href="#"
+                href="https://app.puzzlerswhiz.com"
                 id="cta-create-account"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
@@ -89,7 +89,7 @@ export default function CTA() {
                 <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
               </motion.a>
               <motion.a
-                href="#"
+                href="https://app.puzzlerswhiz.com"
                 id="cta-login"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}

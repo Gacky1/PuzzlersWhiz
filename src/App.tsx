@@ -1,7 +1,15 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import Home from './pages/Home'
-import logoImg from './assets/FaviconLogo.png'
+import AboutUs from './pages/AboutUs'
+import Careers from './pages/Careers'
+import Contact from './pages/Contact'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import CookiePolicy from './pages/CookiePolicy'
+import RefundPolicy from './pages/RefundPolicy'
+import logoImg from './assets/LogoTp.png'
 
 function LoadingScreen({ onDone }: { onDone: () => void }) {
   useEffect(() => {
@@ -135,10 +143,19 @@ function App() {
   }
 
   return (
-    <>
+    <BrowserRouter>
       <ScrollProgress />
-      <Home />
-    </>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/cookie-policy" element={<CookiePolicy />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

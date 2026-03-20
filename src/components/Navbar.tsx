@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Zap } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import logoImg from '../assets/LogoTp.png'
 
 const navLinks = [
   { label: 'Features', href: '#features' },
@@ -36,15 +38,16 @@ export default function Navbar() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-[68px]">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group flex-shrink-0">
-            <div className="relative w-8 h-8 rounded-xl animated-gradient flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-              <Zap size={15} className="text-white" />
-              <div className="absolute inset-0 rounded-xl glow-indigo opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
+          <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
+            <img
+              src={logoImg}
+              alt="PuzzlersWhiz"
+              className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-110"
+            />
             <span className="text-[15px] font-bold text-white tracking-tight heading-xl">
               PuzzlersWhiz
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-0.5">
@@ -63,13 +66,13 @@ export default function Navbar() {
           {/* Right actions */}
           <div className="hidden md:flex items-center gap-2">
             <a
-              href="#cta"
+              href="https://app.puzzlerswhiz.com"
               className="px-3.5 py-2 text-[13px] font-medium text-slate-400 hover:text-white rounded-lg hover:bg-white/[0.05] transition-all duration-200"
             >
               Login
             </a>
             <a
-              href="#cta"
+              href="https://app.puzzlerswhiz.com"
               className="relative px-4 py-2 text-[13px] font-semibold text-white rounded-xl btn-gradient overflow-hidden shimmer-effect"
             >
               Get Started →
