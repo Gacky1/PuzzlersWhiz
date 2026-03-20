@@ -95,7 +95,7 @@ export default function HowItWorks() {
             )}
           </div>
 
-          {steps.map((step, i) => (
+          {steps.map((step) => (
             <motion.div
               key={step.num}
               initial={{ opacity: 0, y: 36 }}
