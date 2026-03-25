@@ -49,7 +49,7 @@ export default function Contact() {
       if (data.success) {
         setSent(true)
       } else {
-        alert("Submission failed. Please try again.")
+        alert(data.message || "Submission failed. Please try again.")
       }
     } catch (error) {
       alert("Error submitting form. Please check your internet connection.")

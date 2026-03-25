@@ -110,7 +110,7 @@ export default function Courses() {
     }
     submitData.append("Amount_Paid", `₹${finalPrice.toLocaleString('en-IN')}`)
     if (screenshot) {
-      submitData.append("Payment_Screenshot", screenshot)
+      submitData.append("attachment", screenshot)
     }
 
     try {
@@ -123,7 +123,7 @@ export default function Courses() {
         setIsSubmitted(true)
       } else {
         console.error("Form submission failed", data)
-        alert("Submission failed. The Access Key may not be configured properly.")
+        alert(data.message || "Submission failed. The Access Key may not be configured properly.")
       }
     } catch (error) {
       console.error("Error submitting form", error)
