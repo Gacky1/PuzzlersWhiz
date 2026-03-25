@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Cloud, Database, Bot, CheckCircle, X, Upload } from 'lucide-react'
+import { Cloud, Database, Bot, CheckCircle, X } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import GuidanceCTA from '../components/GuidanceCTA'
@@ -67,7 +67,6 @@ export default function Courses() {
     whatsapp: '',
     coupon: ''
   })
-  const [screenshot, setScreenshot] = useState<File | null>(null)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -85,7 +84,6 @@ export default function Courses() {
     setIsSubmitted(false)
     setIsSubmitting(false)
     setFormData({ name: '', email: '', whatsapp: '', coupon: '' })
-    setScreenshot(null)
   }
 
   const handleCloseModal = () => {
@@ -109,9 +107,6 @@ export default function Courses() {
       submitData.append("Coupon_Applied", formData.coupon)
     }
     submitData.append("Amount_Paid", `₹${finalPrice.toLocaleString('en-IN')}`)
-    if (screenshot) {
-      submitData.append("attachment", screenshot)
-    }
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -333,26 +328,10 @@ export default function Courses() {
                         />
                       </div>
 
-                      <div className="space-y-1.5 pt-2">
-                        <label className="text-xs font-medium text-slate-400">Payment Screenshot</label>
-                        <div className="relative border border-dashed border-white/[0.2] hover:border-indigo-500/50 rounded-xl p-6 flex flex-col items-center justify-center transition-colors bg-[#0a0a10]">
-                          <input 
-                            required
-                            type="file" 
-                            accept="image/*"
-                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                            onChange={(e) => {
-                              if (e.target.files && e.target.files.length > 0) {
-                                setScreenshot(e.target.files[0])
-                              }
-                            }}
-                          />
-                          <Upload className="w-8 h-8 text-slate-500 mb-2" />
-                          <p className="text-sm font-medium text-slate-300">
-                            {screenshot ? screenshot.name : "Click to upload screenshot"}
-                          </p>
-                          <p className="text-xs text-slate-500 mt-1">PNG, JPG up to 5MB</p>
-                        </div>
+                      <div className="bg-indigo-500/10 border border-indigo-500/30 rounded-xl p-4 mt-2">
+                        <p className="text-sm text-indigo-200">
+                           <span className="font-bold">Note:</span> After completing your payment via the QR code on the left, simply submit this form. You will be given a link to share your payment screenshot with us directly on WhatsApp.
+                        </p>
                       </div>
 
                       <button 
@@ -384,11 +363,19 @@ export default function Courses() {
                   >
                     <CheckCircle className="w-12 h-12 text-emerald-400" />
                   </motion.div>
-                  <h3 className="text-3xl font-black text-white mb-4">Payment Received!</h3>
-                  <p className="text-slate-400 text-lg max-w-md mx-auto mb-8 leading-relaxed">
+                  <h3 className="text-3xl font-black text-white mb-4">Registration Received!</h3>
+                  <p className="text-slate-400 text-lg max-w-md mx-auto mb-6 leading-relaxed">
                     Thank you for purchasing <span className="text-white font-semibold">{selectedCourse.title}</span>. 
-                    We are verifying your transaction. We will be sharing your credentials to access the course shortly via email and WhatsApp.
+                    Please send your payment screenshot to our WhatsApp to verify your transaction.
                   </p>
+                  <a 
+                    href={`https://wa.me/917014286828?text=Hello, I just registered for ${encodeURIComponent(selectedCourse.title)}. Here is my payment screenshot.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-8 py-3 mb-6 rounded-xl font-bold text-emerald-950 bg-emerald-400 hover:bg-emerald-300 transition-all shadow-[0_0_20px_rgba(52,211,153,0.3)] shadow-emerald-400/20"
+                  >
+                    Send Screenshot on WhatsApp
+                  </a>
                   <button 
                     onClick={handleCloseModal}
                     className="px-8 py-3 rounded-xl bg-white/[0.05] border border-white/[0.1] text-white font-medium hover:bg-white/[0.1] transition-all"
