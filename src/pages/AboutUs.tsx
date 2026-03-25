@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useSEO } from '../hooks/useSEO'
+import NilImage from '../assets/Nil.png'
 
 const values = [
   { emoji: '🎯', title: 'Mission-Driven', desc: 'Every feature we build is driven by one question: does this help a student learn better?' },
@@ -14,7 +15,7 @@ const values = [
 const team = [
   { name: 'Dani', role: 'Co-Founder & CEO', image: 'https://media.licdn.com/dms/image/v2/D5603AQFn02T1tqzw1Q/profile-displayphoto-crop_800_800/B56ZvRSg70KwAI-/0/1768742852449?e=1775692800&v=beta&t=bO7OEF54q50YI1Sza-_ucQ96wMdwOh5Z7hOSob_-ad0' },
   { name: 'Rachit Avasthi', role: 'Co-Founder & CTO', image: 'https://rachitavasthi.com/card3.png' },
-  { name: 'Nilanchal', role: 'Co-Founder & CPO', image: 'src/assets/Nil.png' },
+  { name: 'Nilanchal', role: 'Co-Founder & CPO', image: NilImage },
   { name: 'Sugumar', role: 'Co-Founder & CMO', image: 'https://media.licdn.com/dms/image/v2/D5603AQFSz5QGccsLdg/profile-displayphoto-crop_800_800/B56ZtqNZkoK8AI-/0/1767013459105?e=1775692800&v=beta&t=Udc8wANdedV_03ToqeTbPYekqIz0wAd_rbFkhSbEBlI' },
   // { name: 'Karan Singh', role: 'Lead Engineer', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80' },
   // { name: 'Ananya Joshi', role: 'Growth & Marketing', image: 'https://images.unsplash.com/photo-1598550874175-4d0ef43ee90d?auto=format&fit=crop&w=800&q=80' },
@@ -140,6 +141,9 @@ export default function AboutUs() {
                       src={member.image} 
                       alt={member.name} 
                       className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ${isHovered ? 'scale-105 filter-none grayscale-0' : 'scale-100 grayscale hover:grayscale-0'}`}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random&color=fff&size=512`;
+                      }}
                     />
                     
                     {/* Shadow overlay for text readability */}
